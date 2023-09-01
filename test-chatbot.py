@@ -100,7 +100,7 @@ class ContextChatbot:
             # with st.spinner("Thinking..."):
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                response = chain.run(user_query, callbacks=[st_cb])
+                response = chain(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
         # st.write(st.session_state.messages)
 if __name__ == "__main__":
