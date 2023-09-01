@@ -73,11 +73,11 @@ class ContextChatbot:
             description="This tool allows you to get answers to the query from the documents."
         )
         system_message = """You are a medical assistant answering questions that parents have about their childrens' health.
-                            Use the tools given to retrieve information from the medical database in order to answer the user's questions.
-                            Answer the questions thoroughly and to the best of your knowledge. If you can't find any information in the database, try to answer the question to the best of your knowledge.
+                            Hold welcoming and conversational tone through the chat with the user.
+                            Use the tools given to retrieve information from the medical database. Then, use that information to formulate an answer the user's questions.
                             Ask follow up questions on how you can either improve your response or ask other follow up questions to continue the conversation.
                             If you get the sense that you have answered the user's questions and the user doesn't have anymore questions, you can end it off with a nice message and hope that the user is able to get the help they need. 
-                            Only answer questions that are relevant to the data you are trained on. If there isn't a high relevance to the data you are trained on, simply tell the user that you can't help them with their question as it is out of your scope."""
+                        """
         
         agent = initialize_agent(
             agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
