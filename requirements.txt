@@ -1,5 +1,5 @@
 openai
 streamlit
-pinecone
+pinecone-client
 uuid
 tqdm.auto
