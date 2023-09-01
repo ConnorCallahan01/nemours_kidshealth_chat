@@ -2,7 +2,7 @@ import pinecone
 import openai
 from uuid import uuid4
 from tqdm.auto import tqdm
-
+import streamlit as st
 
 class VectorDBChain:
     name: str = "Search medical database"
