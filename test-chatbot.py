@@ -33,6 +33,10 @@ st.title("💬 Nemours KidsHealth Chatbot")
 st.subheader("Trained on the section: General Health --> Pains, Aches, & Injuries")
 st.write("Chat with KidsHealth data to get more custom information regarding your child's health!")
 st.write("Ask questions like: 'My child fell of their bike a week ago and is still complaining of pain, what should I do?', 'My child has a fever and is complaining of a headache, what should I do?', 'My child has a sprained ankle, what should I do?'")
+if st.button("Reset Chat"):
+    # Clear values from *all* all in-memory and on-disk data caches:
+    # i.e. clear values from both square and cube
+    st.cache_data.clear()
 class ContextChatbot:
 
     def __init__(self):
