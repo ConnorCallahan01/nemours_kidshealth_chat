@@ -37,24 +37,24 @@ class ContextChatbot:
 
     def __init__(self):
         utils.configure_openai_api_key()
-        self.openai_model = '3ca59ab0-4e95-48b6-9fb6-3ea60a051057'
+        self.openai_model = st.secrets["model"]
     
     @st.cache_resource
     def setup_chain(_self):
-        loader_pinecone = PyPDFDirectoryLoader("./Aches_Pains_&_Injuries/")
-        pages = loader_pinecone.load()
-        model_name = 'text-embedding-ada-002'
-        embeddings_pinecone = OpenAIEmbeddings(model=model_name, openai_api_key="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")
-        pinecone.init(api_key='3ca59ab0-4e95-48b6-9fb6-3ea60a051057',environment='gcp-starter')
+        # loader_pinecone = PyPDFDirectoryLoader("./Aches_Pains_&_Injuries/")
+        # pages = loader_pinecone.load()
+        # model_name = 'text-embedding-ada-002'
+        # embeddings_pinecone = OpenAIEmbeddings(model=model_name, openai_api_key=st.secrets["open_ai_api"])
+        # pinecone.init(api_key=st.secrets["pinecone_api"],environment=st.secrets["environment"])
 
-        index_name = "buzzindex"
-        index = pinecone.Index(index_name)
-        text_field = "text"
+        # index_name = "buzzindex"
+        # index = pinecone.Index(index_name)
+        # text_field = "text"
 
         llm = ChatOpenAI(
             temperature=0.8,
-            model_name="ft:gpt-3.5-turbo-0613:personal::7tds9xcy",
-            openai_api_key="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"
+            model_name=st.secrets["model"],
+            openai_api_key=st.secrets["open_ai_api"]
         )
         conversational_memory = ConversationBufferWindowMemory(
             memory_key='chat_history',
@@ -63,8 +63,8 @@ class ContextChatbot:
         )
         vdb = VectorDBChain(
             index_name="buzzindex",
-            environment='gcp-starter',
-            pinecone_api_key='3ca59ab0-4e95-48b6-9fb6-3ea60a051057'
+            environment=st.secrets["environment"],
+            pinecone_api_key=st.secrets["pinecone_api"]
         )
 
         vdb_tool = Tool(
