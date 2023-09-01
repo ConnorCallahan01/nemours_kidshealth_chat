@@ -100,7 +100,7 @@ class ContextChatbot:
             with st.spinner("Thinking..."):
                 st_cb = StreamHandler(st.empty())
                 response = chain(user_query, callbacks=[st_cb])
-                st.session_state.messages.append({"role": "assistant", "content": response})
+                st.session_state.messages.append({"role": "assistant", "content": response['output']})
         st.write(st.session_state.messages[-1]['content']['output'])
 if __name__ == "__main__":
     obj = ContextChatbot()
