@@ -97,12 +97,11 @@ class ContextChatbot:
         user_query = st.chat_input(placeholder="Ask me anything!")
         if user_query:
             utils.display_msg(user_query, 'user')
-            # with st.spinner("Thinking..."):
-            with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
                 st_cb = StreamHandler(st.empty())
                 response = chain(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
-        # st.write(st.session_state.messages)
+        st.write(st.session_state.messages)
 if __name__ == "__main__":
     obj = ContextChatbot()
     obj.main()
