@@ -2,4 +2,4 @@ openai
 streamlit
 pinecone-client
 uuid
-tqdm.auto
+tqdm
