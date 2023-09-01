@@ -1,2 +1,5 @@
-abacusai
+openai
 streamlit
+pinecone
+uuid
+tqdm.auto
