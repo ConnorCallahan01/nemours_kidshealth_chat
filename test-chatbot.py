@@ -37,6 +37,7 @@ if st.button("Reset Chat"):
     # Clear values from *all* all in-memory and on-disk data caches:
     # i.e. clear values from both square and cube
     st.cache_data.clear()
+    st.experimental_rerun()
 class ContextChatbot:
 
     def __init__(self):
