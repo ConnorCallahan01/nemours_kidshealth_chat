@@ -16,14 +16,14 @@ class VectorDBChain:
         environment: str,
         pinecone_api_key: str
     ):
-        pinecone.init(api_key=pinecone_api_key, environment=environment)
+        pinecone.init(api_key=st.secrets["pinecone_api"], environment=st.secrets["environment"])
         if index_name not in pinecone.list_indexes():
             pinecone.create_index(
                 name=index_name,metric="cosine", shards=1)
         self.index = pinecone.Index(index_name)
 
     def _embed(self, texts: list[str]):
-        openai.api_key = "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"
+        openai.api_key = st.secrets["open_ai_api"]
         res = openai.Embedding.create(
             input=texts, engine="text-embedding-ada-002"
         )
