@@ -76,14 +76,15 @@ class ContextChatbot:
             func=vdb.query,
             description="This tool allows you to get answers to the query from the documents."
         )
-        # system_message = """You are a medical assistant answering questions that parents have about their childrens' health. Try and help the user with any questions that they may have about their child's health."""
+        system_message = """You are a medical assistant answering questions that parents have about their childrens' health. 
+                            Be conversational, ask follow-up questions, and use tools and the chat history to answer the user's question"""
         
         agent = initialize_agent(
             agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
             tools=[vdb_tool],
             llm=llm,
             verbose=True,
-            # agent_kwargs={"system_message": system_message},
+            agent_kwargs={"system_message": system_message},
             memory=conversational_memory,
             handle_parsing_errors=True,
             
