@@ -74,7 +74,7 @@ class ContextChatbot:
         vdb_tool = Tool(
             name=vdb.name,
             func=vdb.query,
-            description="This tool allows you to get answers to the query from the documents."
+            description="This tool allows you to get references to the query from the documents. Use the returned text as knowledge for how to answer the query."
         )
         system_message = """You are a medical assistant answering questions that parents have about their childrens' health. 
                             Be conversational, ask follow-up questions, and use tools and the chat history to answer the user's question"""
